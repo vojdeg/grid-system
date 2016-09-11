@@ -15,7 +15,6 @@
           [class *= 'col-'] {
               float: left;
               min-height: 1px;
-              background: blue;
               padding: $gutter-size;
               box-sizing: border-box; //nie zmienia sie zewnetrzna szerokosc np. diva
           }
