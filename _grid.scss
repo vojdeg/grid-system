@@ -1,0 +1,32 @@
+@mixin grid-system ($col-count:12, $max-width:1000px, $gutter-size:12px, $breakpoint-width:800px){
+  $oneColWidth: 100% / $col-count;
+  .grid-container {
+      width: 100%;
+      max-width: $max-width;
+      margin: 0 auto;
+
+      .row {
+          &::after,
+          &::before {
+              content: "";
+              display: table;
+              clear: both;
+          }
+          [class *= 'col-'] {
+              float: left;
+              min-height: 1px;
+              background: blue;
+              padding: $gutter-size;
+              box-sizing: border-box; //nie zmienia sie zewnetrzna szerokosc np. diva
+          }
+          @for $i from 1 through $col-count {
+              .col-#{$i} {
+                  width: 100%;
+                  @media (min-width: $breakpoint-width) {
+                      width: $oneColWidth * $i;
+                  }
+              }
+          }
+      }
+  }
+}
